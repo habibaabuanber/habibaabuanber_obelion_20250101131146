@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';
 import './LoginPage.css';
 
 function LoginPage() {
@@ -48,32 +47,6 @@ function LoginPage() {
     }
   };
 
-  const handleGoogleLoginSuccess = async (response) => {
-    try {
-      const googleResponse = await fetch('https://attendapp-backend.cloud-stacks.com/api/google-login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token: response.credential }),
-      });
-
-      const data = await googleResponse.json();
-      if (googleResponse.ok) {
-        // Handle successful Google login
-        console.log(data.message);
-      } else {
-        console.error(data.error);
-      }
-    } catch (error) {
-      console.error('Google login failed:', error);
-    }
-  };
-
-  const handleGoogleLoginFailure = (error) => {
-    console.error('Google login error:', error);
-  };
-
   return (
     <div className="login-page">
       <form className="auth-form" onSubmit={handleSubmit}>
@@ -107,10 +80,6 @@ function LoginPage() {
         <button type="button" onClick={() => setIsRegistering(!isRegistering)}>
           {isRegistering ? 'Switch to Login' : 'Switch to Register'}
         </button>
-        <GoogleLogin
-          onSuccess={handleGoogleLoginSuccess}
-          onFailure={handleGoogleLoginFailure}
-        />
       </form>
     </div>
   );
