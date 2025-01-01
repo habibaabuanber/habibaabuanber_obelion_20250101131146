@@ -1,0 +1,75 @@
+.attendee-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.attendee-page h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.attendee-page .add-attendee {
+  margin-bottom: 20px;
+}
+
+.attendee-page .add-attendee input {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(50% - 12px);
+}
+
+.attendee-page .add-attendee button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.attendee-page .add-attendee button:hover {
+  background-color: #0056b3;
+}
+
+.attendee-page .attendee-list {
+  margin-top: 20px;
+}
+
+.attendee-page .attendee-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.attendee-page .attendee-list li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.attendee-page .attendee-list li:last-child {
+  border-bottom: none;
+}
+
+.attendee-page .attendee-list li span {
+  font-weight: bold;
+}
+
+.attendee-page .attendee-list button {
+  padding: 5px 10px;
+  margin-left: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.attendee-page .attendee-list button:hover {
+  background-color: #0056b3;
+}

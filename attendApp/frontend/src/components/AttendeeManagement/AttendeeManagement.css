@@ -1,0 +1,71 @@
+.attendee-management {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.attendee-management h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.attendee-management .add-attendee,
+.attendee-management .bulk-upload {
+  margin-bottom: 20px;
+}
+
+.attendee-management .add-attendee input,
+.attendee-management .bulk-upload input[type="file"] {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(50% - 12px);
+}
+
+.attendee-management .add-attendee button,
+.attendee-management .bulk-upload button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.attendee-management .add-attendee button:hover,
+.attendee-management .bulk-upload button:hover {
+  background-color: #0056b3;
+}
+
+.attendee-management .attendee-list {
+  margin-top: 20px;
+}
+
+.attendee-management .attendee-list h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.attendee-management .attendee-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.attendee-management .attendee-list li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.attendee-management .attendee-list li:last-child {
+  border-bottom: none;
+}
+
+.attendee-management .attendee-list li span {
+  font-weight: bold;
+}

@@ -16,10 +16,10 @@
         "@react-oauth/google": "latest"
     },
     "devDependencies": {
+        "axios": "0.21.1",
         "eslint": "latest",
-        "webpack": "latest",
         "react": "latest",
-        "axios": "0.21.1"
+        "webpack": "latest"
     },
     "browserslist": {
         "production": [
