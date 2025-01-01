@@ -9,9 +9,9 @@
     },
     "dependencies": {
         "react": "latest",
+        "react-dom": "latest",
         "react-router-dom": "latest",
         "axios": "latest",
-        "react-dom": "latest",
         "redux": "latest",
         "@react-oauth/google": "latest"
     },

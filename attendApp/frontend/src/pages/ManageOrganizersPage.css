@@ -1,0 +1,76 @@
+.manage-organizers-page {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.manage-organizers-page h1 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+  text-align: center;
+}
+
+.manage-organizers-page .add-organizer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.manage-organizers-page .add-organizer input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.manage-organizers-page .add-organizer button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.manage-organizers-page .add-organizer button:hover {
+  background-color: #45a049;
+}
+
+.manage-organizers-page .organizers-list {
+  margin-top: 20px;
+}
+
+.manage-organizers-page .organizer-item {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+
+.manage-organizers-page .organizer-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.manage-organizers-page .permissions {
+  margin-top: 10px;
+}
+
+.manage-organizers-page .permissions label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #555;
+}
