@@ -1,99 +1,88 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';
-import './Login.css';
-import axios from 'axios';
+import './LoginPage.css';
 
-const Login = () => {
+function LoginPage() {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false);
   const navigate = useNavigate();
 
-  const handleRegister = async () => {
-    try {
-      const response = await axios.post('https://attendapp-backend.cloud-stacks.com/api/register', {
-        email,
-        phoneNumber,
-        password,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      console.log(response.data.message);
-    } catch (error) {
-      console.error(error.response?.data?.error || 'Registration error');
-    }
+  const handleInputChange = (setter) => (event) => {
+    setter(event.target.value);
   };
 
-  const handleLogin = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const url = isRegistering
+      ? 'https://attendapp-backend.cloud-stacks.com/api/register'
+      : 'https://attendapp-backend.cloud-stacks.com/api/login';
+
+    const body = {
+      email,
+      phoneNumber: isRegistering ? phoneNumber : undefined,
+      password,
+    };
+
     try {
-      const response = await axios.post('https://attendapp-backend.cloud-stacks.com/api/login', {
-        email,
-        password,
-      }, {
+      const response = await fetch(url, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify(body),
       });
-      console.log(response.data.message);
-    } catch (error) {
-      console.error(error.response?.data?.error || 'Login error');
-    }
-  };
 
-  const handleGoogleLoginSuccess = async (response) => {
-    try {
-      const googleToken = response.credential;
-      const res = await axios.post('https://attendapp-backend.cloud-stacks.com/api/google-login', {
-        token: googleToken,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      console.log(res.data.message);
+      const data = await response.json();
+      if (response.ok) {
+        // Handle successful login or registration
+        console.log(data.message);
+      } else {
+        // Handle errors
+        console.error(data.error);
+      }
     } catch (error) {
-      console.error(error.response?.data?.error || 'Google login error');
+      console.error('An error occurred:', error);
     }
-  };
-
-  const handleGoogleLoginFailure = (error) => {
-    console.error('Google login failed', error);
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <div className="login-form">
+    <div className="login-page">
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <h2>{isRegistering ? 'Register' : 'Login'}</h2>
         <input
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleInputChange(setEmail)}
+          required
         />
-        <input
-          type="text"
-          placeholder="Phone Number"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
+        {isRegistering && (
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChange={handleInputChange(setPhoneNumber)}
+            required
+          />
+        )}
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handleInputChange(setPassword)}
+          required
         />
-        <button onClick={handleRegister}>Register</button>
-        <button onClick={handleLogin}>Login</button>
-        <GoogleLogin
-          onSuccess={handleGoogleLoginSuccess}
-          onError={handleGoogleLoginFailure}
-        />
-      </div>
+        <button type="submit">
+          {isRegistering ? 'Register' : 'Login'}
+        </button>
+        <button type="button" onClick={() => setIsRegistering(!isRegistering)}>
+          {isRegistering ? 'Switch to Login' : 'Switch to Register'}
+        </button>
+      </form>
     </div>
   );
-};
+}
 
-export default Login;
+export default LoginPage;
